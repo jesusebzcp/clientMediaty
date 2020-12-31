@@ -9,6 +9,7 @@ import {
   loginDispatch,
   registryDispatch,
 } from "../../src/flux/auth/actions";
+import Error from "../../src/components/Error";
 
 const defaultOptions = {
   loop: true,
@@ -25,7 +26,9 @@ const INITIAL_STATE = {
 };
 
 const Login = () => {
-  const { authDispatch } = useContext(StoreContext);
+  const { state, authDispatch } = useContext(StoreContext);
+  const { authState } = state;
+  const { loading, error, errorMsn } = authState;
 
   const [login, setLogin] = useState(false);
   const [form, setForm] = useState(INITIAL_STATE);
@@ -95,10 +98,16 @@ const Login = () => {
         <h3>
           Marketing Simple. Marketing de Impacto. Marketing de Resultados.
         </h3>
-        <Lottie options={defaultOptions} height={400} width={400} />
+        <Lottie options={defaultOptions} height={600} width={600} />
       </div>
       <div className="containerForm">
         <form onSubmit={handleAuth} className="formLogin">
+          <Error error={error} msn={errorMsn} />
+          <div className="logo">
+            <img src={"/static/assets/images/logo.png"} />
+            <span>Conferencia</span>
+          </div>
+
           {!login && (
             <Input
               placeholder={"Ingresa tu nombre"}

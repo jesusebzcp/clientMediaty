@@ -8,7 +8,7 @@
 
   --border: 20px;
   --borderRight: 0px 20px 20px 0px;
-  --shadow: 0px 0px 15px -11px rgba(110, 110, 110, 1);
+  --shadow: -2px 3px 15px 0px rgba(107, 107, 107, 1);
 }
 /* color: var(--header-color, blue); */
 html,
@@ -93,6 +93,7 @@ p {
   cursor: pointer;
   font-weight: 600;
   text-transform: uppercase;
+  box-shadow: var(--shadow);
 }
 .buttonGlobal:hover {
   background-color: #1b9b4a;
@@ -123,4 +124,36 @@ p {
 .textCheckBox {
   font-size: 0.8rem;
   color: var(--gra2);
+}
+.logo img {
+  width: 50px;
+  height: 50px;
+  margin: 1rem 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo span {
+  font-weight: bold;
+  margin-left: 5px;
+}
+.containerError {
+  background-color: rgba(235, 3, 3, 0.637);
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 300px;
+}
+.containerError span {
+  color: white;
+}
+.containerLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fafafa;
 }
