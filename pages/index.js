@@ -1,3 +1,3 @@
-export default function Home() {
-  return <h1>Hello</h1>;
+export default function Root() {
+  return <h1>INDEX HO</h1>;
 }

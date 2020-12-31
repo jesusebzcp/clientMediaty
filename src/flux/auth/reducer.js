@@ -2,7 +2,7 @@ import createReducer from "../createReducer";
 import { LOADING, SET_USER, HANDLE_ERROR } from "./types";
 
 export const INITIAL_STATE_AUTH = {
-  errorMsn: false,
+  c: false,
   error: false,
   loading: false,
   user: null,

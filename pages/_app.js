@@ -1,12 +1,15 @@
 import "../src/styles/main.css";
 import Store from "../src/flux";
 import PropTypes from "prop-types";
+import Layout from "./Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Store>
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Store>
     </>
   );

@@ -1,3 +1,16 @@
+:root {
+  --primary: #25d366;
+  --secondary: #fe9192;
+  --secondary: #fe9192;
+  --gra1: #212121;
+  --gra2: #333233;
+  --gra3: #e5e5e5;
+
+  --border: 20px;
+  --borderRight: 0px 20px 20px 0px;
+  --shadow: 0px 0px 15px -11px rgba(110, 110, 110, 1);
+}
+/* color: var(--header-color, blue); */
 html,
 body {
   padding: 0;
@@ -13,4 +26,101 @@ a {
 
 * {
   box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+.containerLogin {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+}
+.containerImg {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  background-color: var(--primary);
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--borderRight);
+}
+.containerImg h3 {
+  font-weight: 500;
+  margin: 0.5rem;
+  color: var(--gra2);
+}
+.containerImg h1 {
+  margin: 0.5rem;
+  color: var(--gra1);
+}
+.containerForm {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.inputGlobal {
+  background-color: var(--gra3);
+  border: 0;
+  padding: 0.5rem 1rem;
+  width: 300px;
+  outline: none;
+  border-radius: var(--border);
+  height: 3rem;
+}
+.inputGlobal:focus {
+  border-radius: var(--border);
+  box-shadow: var(--shadow);
+  border: 0.5px var(--gra1) solid;
+}
+.formLogin {
+  display: flex;
+  flex-direction: column;
+}
+.buttonGlobal {
+  background-color: var(--primary);
+  border: 0;
+  outline: none;
+  height: 2.5rem;
+  border-radius: var(--border);
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.buttonGlobal:hover {
+  background-color: #1b9b4a;
+  border: 0;
+  outline: none;
+  border-radius: var(--border);
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  color: white;
+}
+.underlineBtn {
+  border: 0;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  outline: none;
+}
+.check {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.check input[type="checkbox"] {
+  cursor: pointer;
+}
+.textCheckBox {
+  font-size: 0.8rem;
+  color: var(--gra2);
 }
