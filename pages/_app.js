@@ -1,7 +1,20 @@
-import '../styles/globals.css'
+import "../src/styles/main.css";
+import Store from "../src/flux";
+import PropTypes from "prop-types";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Store>
+        <Component {...pageProps} />
+      </Store>
+    </>
+  );
 }
 
-export default MyApp
+MyApp.propTypes = {
+  Component: PropTypes.func,
+  pageProps: PropTypes.object,
+};
+
+export default MyApp;
