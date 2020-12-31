@@ -1,4 +1,4 @@
-import { HANDLE_ERROR, LOADING, SET_USER } from "./types";
+import { HANDLE_ERROR, LOADING, SET_USER, SING_OFF } from "./types";
 import clientAxios from "../../config/axios";
 import tokenAuth from "../../config/token";
 import { END_POINT_AUTH, END_POINT_CREATE_USER } from "../../constants";
@@ -24,6 +24,8 @@ export const registryDispatch = async (user, dispatch) => {
 
     const res = await clientAxios.post(END_POINT_CREATE_USER, user);
     const { token } = res.data;
+
+    await userAuth(token, dispatch);
     setLoading(false, dispatch);
   } catch (error) {
     console.log("error registryDispatch =>", error);
@@ -58,7 +60,15 @@ export const userAuth = async (token, dispatch) => {
     dispatch({ type: SET_USER, payload: response.data.user });
     setLoading(false, dispatch);
   } catch (error) {
-    console.log("error userAuth =>", error.response);
-    handleError({ error: true, errorMsn: error.response.data.msn }, dispatch);
+    console.log("error =>", error);
+    handleError(
+      { error: true, errorMsn: "Lo siento, su sesión expiro" },
+      dispatch
+    );
+    singOff(dispatch);
   }
+};
+
+export const singOff = (dispatch) => {
+  dispatch({ type: SING_OFF });
 };

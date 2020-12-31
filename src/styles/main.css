@@ -5,6 +5,7 @@
   --gra1: #212121;
   --gra2: #333233;
   --gra3: #e5e5e5;
+  --gra4: #616161;
 
   --border: 20px;
   --borderRight: 0px 20px 20px 0px;
@@ -156,4 +157,67 @@ p {
   height: 100vh;
   width: 100vw;
   background-color: #fafafa;
+}
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 6px 15px -5px rgba(0, 0, 0, 0.75);
+  padding: 0.5rem 2rem;
+  margin-bottom: 1rem;
+}
+.containerLogoNav img {
+  width: 50px;
+  height: 50px;
+}
+.layout {
+  background-color: #fafafa;
+}
+.userDefault {
+  display: flex;
+  align-items: center;
+}
+.userDefault span {
+  font-weight: bold;
+  color: var(--gra4);
+  font-size: 0.9rem;
+}
+.userDefault img {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+}
+.containerLinks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.containerLinks a {
+  margin-right: 1rem;
+  color: var(--gra4);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.containerLinks a:hover {
+  color: var(--gra1);
+  transition: all 0.3s ease-in;
+  text-decoration: underline;
+}
+.containerHero {
+  display: flex;
+  margin-top: 2rem;
+}
+.hero {
+  display: flex;
+  background-color: #212121;
+  flex: 2;
+  align-items: center;
+  height: 25vh;
+  border-radius: 10px;
+  justify-content: center;
+  color: white;
+}
+.activeLink {
+  color: #000;
+  text-decoration: underline;
 }
