@@ -48,7 +48,6 @@ export const getConferences = async (dispatch) => {
   }
 };
 export const createConference = async (conference, dispatch) => {
-  console.log("conference =>", conference);
   try {
     setLoading(true, dispatch);
     const res = await clientAxios.post(END_POINT_CREATE_CONFERENCE, conference);
@@ -76,7 +75,6 @@ export const createConference = async (conference, dispatch) => {
   }
 };
 export const editConference = async (conference, dispatch) => {
-  console.log("edi ====>", conference);
   try {
     setLoading(true, dispatch);
     const res = await clientAxios.put(END_POINT_CONFERENCE, conference);

@@ -9,7 +9,6 @@ const NavBar = () => {
   const { user } = authState;
 
   const router = useRouter();
-  console.log("router", router.pathname);
 
   return (
     <nav className="navBar">

@@ -63,18 +63,17 @@ export default function Home() {
         </div>
 
         <div className="containerItems" id="containerItems">
-          {!menuIndex &&
-            filterEnabled &&
-            filterEnabled.length > 0 &&
-            filterEnabled.map((conference, index) => {
-              return (
-                <ItemConference
-                  key={index}
-                  conference={conference}
-                  action={() => handleDetail(conference)}
-                />
-              );
-            })}{" "}
+          {!menuIndex && filterEnabled && filterEnabled.length > 0
+            ? filterEnabled.map((conference, index) => {
+                return (
+                  <ItemConference
+                    key={index}
+                    conference={conference}
+                    action={() => handleDetail(conference)}
+                  />
+                );
+              })
+            : "No tienes conferencia"}{" "}
           {menuIndex &&
             filterUser &&
             filterUser.length > 0 &&

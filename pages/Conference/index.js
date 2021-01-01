@@ -35,9 +35,7 @@ const Conference = () => {
   const [edit, setEdit] = useState(false);
   const [menuIndex, setMenuIndex] = useState(true);
   const [form, setForm] = useState(INITIAL_STATE);
-  console.log("createBy.id = >", form.createBy.id);
   const userConferences = all.filter((c) => {
-    console.log("iterado =>", c);
     return c.createBy.id === user._id;
   });
 
@@ -96,7 +94,7 @@ const Conference = () => {
   };
 
   const onEdit = async () => {
-    if (form.attendants.length > 0) {
+    if (form.attendants.length > 0 && !isEnabled) {
       handleError(
         {
           error: true,
@@ -170,18 +168,17 @@ const Conference = () => {
           />
         </div>
       </div>
-      {!menuIndex &&
-        userConferences &&
-        userConferences.length > 0 &&
-        userConferences.map((conference, index) => {
-          return (
-            <ItemConference
-              key={index}
-              conference={conference}
-              action={() => handleEdit(conference)}
-            />
-          );
-        })}
+      {!menuIndex && userConferences && userConferences.length > 0
+        ? userConferences.map((conference, index) => {
+            return (
+              <ItemConference
+                key={index}
+                conference={conference}
+                action={() => handleEdit(conference)}
+              />
+            );
+          })
+        : "No tienes conferencia"}
 
       {menuIndex && (
         <div className="meConferences">

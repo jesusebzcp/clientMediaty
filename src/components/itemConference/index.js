@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const ItemConference = ({ conference, action, style }) => {
   const { name, time, attendants, locationCity } = conference;
-  console.log("conference =>", conference);
 
   return (
     <div className="card" style={style ? style : {}}>
