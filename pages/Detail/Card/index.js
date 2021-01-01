@@ -1,3 +1,5 @@
+import React from "react";
+
 import Button from "../../../src/components/Button";
 import PropTypes from "prop-types";
 import Error from "../../../src/components/Error";

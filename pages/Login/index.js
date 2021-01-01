@@ -3,7 +3,6 @@ import Lottie from "react-lottie";
 import { StoreContext } from "../../src/flux";
 import Button from "../../src/components/Button";
 import Input from "../../src/components/Input";
-import Loading from "../../src/components/Loading";
 import { IMG_HERO } from "../../src/constants";
 import {
   handleError,

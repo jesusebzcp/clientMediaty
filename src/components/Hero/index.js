@@ -1,9 +1,15 @@
 import PropTypes from "prop-types";
+import util from "../../util";
 
 const Hero = ({ title }) => {
   return (
     <div className="hero">
-      <h2>{title}</h2>
+      <img src={"/static/assets/images/home.jpg"} />
+      <div className="containerCallAction">
+        <h2>{util.capitalize(title)}</h2>
+
+        <a className={"linkPress"}>Visitar sitio oficial</a>
+      </div>
     </div>
   );
 };

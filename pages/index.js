@@ -26,14 +26,15 @@ export default function Home() {
   };
 
   const activeMenuItem = {
-    fontSize: "1.2rem",
-    color: "#000",
-    textDecoration: "underline",
+    fontSize: "2rem",
+    fontWeight: 700,
+    color: "#051145",
     transition: "all 0.3s ease-in",
   };
   const menuItem = {
     color: "#333233",
     cursor: "pointer",
+    fontWeight: 700,
   };
 
   useEffect(() => {
@@ -41,26 +42,28 @@ export default function Home() {
   }, []);
   return (
     <Section>
-      <Hero title={"Bienvenido"} />
+      <Hero
+        title={"Brindamos soluciones, para que escuches tu tema preferido"}
+      />
 
       <div>
         <div className="menuIndex">
           <span
-            style={menuIndex === 0 ? activeMenuItem : menuItem}
-            onClick={() => setMenuIndex(0)}
+            style={!menuIndex ? activeMenuItem : activeMenuItem}
+            onClick={() => setMenuIndex(!menuIndex)}
           >
-            Listas de conferencia
+            {!menuIndex ? "Listas de conferencia" : "Inscritos"}
           </span>
           <span
-            style={menuIndex === 1 ? activeMenuItem : menuItem}
-            onClick={() => setMenuIndex(1)}
+            style={menuIndex ? menuItem : menuItem}
+            onClick={() => setMenuIndex(!menuIndex)}
           >
-            Inscritos
+            {!menuIndex ? "Inscritos" : "Listas de conferencia"}
           </span>
         </div>
 
-        <div className="containerItems">
-          {menuIndex === 0 &&
+        <div className="containerItems" id="containerItems">
+          {!menuIndex &&
             filterEnabled &&
             filterEnabled.length > 0 &&
             filterEnabled.map((conference, index) => {
@@ -72,7 +75,7 @@ export default function Home() {
                 />
               );
             })}{" "}
-          {menuIndex === 1 &&
+          {menuIndex &&
             filterUser &&
             filterUser.length > 0 &&
             filterUser.map((conference, index) => {

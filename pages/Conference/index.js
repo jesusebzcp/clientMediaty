@@ -1,3 +1,5 @@
+import React from "react";
+
 import FormConference from "./FormConference";
 import Section from "../../src/components/Section";
 import { useContext, useEffect, useState } from "react";
@@ -11,44 +13,39 @@ import { StoreContext } from "../../src/flux";
 
 import moment from "moment";
 import ItemConference from "../../src/components/itemConference";
+import Custom404 from "../404";
+import Button from "../../src/components/Button";
 const timeLast = moment().add(2, "hour").format("HH:mm");
-
-const INITIAL_STATE = {
-  name: "",
-  quota: 0,
-  date: moment().format("2020-12-31"),
-  time: timeLast,
-  locationCity: "",
-};
-
-const activeMenuItem = {
-  fontSize: "1.2rem",
-  color: "#000",
-  textDecoration: "underline",
-  transition: "all 0.3s ease-in",
-};
-const menuItem = {
-  color: "#333233",
-  cursor: "pointer",
-};
 
 const Conference = () => {
   const { state, conferenceDispatch } = useContext(StoreContext);
   const { authState, conferenceState } = state;
   const { all } = conferenceState;
   const { user } = authState;
-  const [form, setForm] = useState(INITIAL_STATE);
+  const INITIAL_STATE = {
+    name: "",
+    quota: 0,
+    date: moment().format("2020-12-31"),
+    time: timeLast,
+    locationCity: "",
+    attendants: [],
+    createBy: { id: user._id, name: user.name },
+  };
   const [isEnabled, setIsEnabled] = useState(true);
   const [edit, setEdit] = useState(false);
-  const [menuIndex, setMenuIndex] = useState(false);
-  const userConferences = all.filter((c) => c.createBy.id === user._id);
+  const [menuIndex, setMenuIndex] = useState(true);
+  const [form, setForm] = useState(INITIAL_STATE);
+  console.log("createBy.id = >", form.createBy.id);
+  const userConferences = all.filter((c) => {
+    console.log("iterado =>", c);
+    return c.createBy.id === user._id;
+  });
 
   const onChangeText = (target, value) => {
     setForm({ ...form, [target]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const { name, quota, time, date, locationCity } = form;
     if (name === "") {
       handleError(
@@ -81,34 +78,24 @@ const Conference = () => {
         quota,
         isEnabled,
         locationCity,
-        createBy: { id: user._id, name: user.name },
         time,
         date,
+        createBy: { id: user._id, name: user.name },
       },
       conferenceDispatch
     );
+
     setForm(INITIAL_STATE);
+    setMenuIndex();
   };
   const handleEdit = (item) => {
     setForm(item);
     setIsEnabled(item.isEnabled);
-    setMenuIndex(1);
+    setMenuIndex(true);
     setEdit(true);
   };
-  const handleMenu = () => {
-    if (edit) {
-      if (menuIndex) {
-        setEdit(false);
-        setForm(INITIAL_STATE);
-        setMenuIndex(!menuIndex);
-        return;
-      }
-    }
-    setMenuIndex(!menuIndex);
-  };
-  const onEdit = async (e) => {
-    e.preventDefault();
 
+  const onEdit = async () => {
     if (form.attendants.length > 0) {
       handleError(
         {
@@ -162,21 +149,26 @@ const Conference = () => {
   useEffect(() => {
     getConferences(conferenceDispatch);
   }, []);
+
+  if (user && user.role !== "speaker") {
+    return <Custom404 />;
+  }
   return (
     <Section>
-      <div className="menuIndex">
-        <span
-          style={!menuIndex ? activeMenuItem : menuItem}
-          onClick={() => handleMenu()}
+      <div>
+        <div
+          style={{
+            margin: "2rem 0 0.5rem 0 ",
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
         >
-          Mis conferencias
-        </span>
-        <span
-          style={menuIndex ? activeMenuItem : menuItem}
-          onClick={() => handleMenu()}
-        >
-          {edit ? "Editar conferencia" : " Crear conferencia"}
-        </span>
+          <Button
+            text={menuIndex ? "Ver mis conferencias" : "crear conferencia"}
+            type={"button"}
+            action={() => setMenuIndex(!menuIndex)}
+          />
+        </div>
       </div>
       {!menuIndex &&
         userConferences &&
