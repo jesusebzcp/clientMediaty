@@ -1,4 +1,3 @@
-import Hero from "../../src/components/Hero";
 import FormConference from "./FormConference";
 import Section from "../../src/components/Section";
 import { useContext, useEffect, useState } from "react";

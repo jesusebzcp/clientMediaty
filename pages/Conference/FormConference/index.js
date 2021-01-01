@@ -4,6 +4,7 @@ import Input from "../../../src/components/Input";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import { StoreContext } from "../../../src/flux";
+import moment from "moment";
 
 const FormConference = ({
   onChangeText,
@@ -17,6 +18,8 @@ const FormConference = ({
   const { state } = useContext(StoreContext);
   const { conferenceState } = state;
   const { error, errorMsn } = conferenceState;
+
+  console.log("form.date =>", form.date);
   return (
     <form className="formConference" onSubmit={edit ? onEdit : submit}>
       <Error error={error} msn={errorMsn} />
@@ -44,7 +47,7 @@ const FormConference = ({
         placeholder={"Fecha de inicio"}
         type={"date"}
         onChange={onChangeText}
-        value={form.date}
+        value={moment(form.date).format("2020-12-31")}
         name={"date"}
       />
       <Input
@@ -78,6 +81,7 @@ FormConference.propTypes = {
   setIsEnabled: PropTypes.func,
   isEnabled: PropTypes.bool,
   edit: PropTypes.bool,
+  onEdit: PropTypes.func,
 };
 
 export default FormConference;

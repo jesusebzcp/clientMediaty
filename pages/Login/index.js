@@ -11,6 +11,7 @@ import {
   registryDispatch,
 } from "../../src/flux/auth/actions";
 import Error from "../../src/components/Error";
+import { useRouter } from "next/router";
 
 const defaultOptions = {
   loop: true,
@@ -27,6 +28,7 @@ const INITIAL_STATE = {
 };
 
 const Login = () => {
+  const router = useRouter();
   const { state, authDispatch } = useContext(StoreContext);
   const { authState } = state;
   const { loading, error, errorMsn } = authState;
@@ -57,6 +59,7 @@ const Login = () => {
       }
       await loginDispatch({ email, password }, authDispatch);
       setForm(INITIAL_STATE);
+      router.push("/");
 
       return;
     } else {
@@ -86,15 +89,15 @@ const Login = () => {
       },
       authDispatch
     );
+
     setForm(INITIAL_STATE);
+    router.push("/");
   };
 
   const onChangeText = (target, value) => {
     setForm({ ...form, [target]: value });
   };
-  if (loading) {
-    return <Loading />;
-  }
+
   return (
     <div className="containerLogin">
       <div className="containerImg">
