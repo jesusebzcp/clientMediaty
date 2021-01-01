@@ -11,6 +11,7 @@ import {
 } from "../../src/flux/auth/actions";
 import Error from "../../src/components/Error";
 import { useRouter } from "next/router";
+import util from "../../src/util";
 
 const defaultOptions = {
   loop: true,
@@ -30,7 +31,7 @@ const Login = () => {
   const router = useRouter();
   const { state, authDispatch } = useContext(StoreContext);
   const { authState } = state;
-  const { loading, error, errorMsn } = authState;
+  const { error, errorMsn } = authState;
 
   const [login, setLogin] = useState(false);
   const [form, setForm] = useState(INITIAL_STATE);
@@ -44,6 +45,17 @@ const Login = () => {
       if (password === "" || email === " ") {
         return handleError(
           { error: true, errorMsn: "Todos los campos son necesarios" },
+          authDispatch
+        );
+      }
+      const response = util.validateEmail(email);
+
+      if (!response) {
+        return handleError(
+          {
+            error: true,
+            errorMsn: "Email invalido, por favor ingresa un email valido",
+          },
           authDispatch
         );
       }
@@ -65,6 +77,17 @@ const Login = () => {
       if (name === "" || password === "" || email === " ") {
         return handleError(
           { error: true, errorMsn: "Todos los campos son necesarios" },
+          authDispatch
+        );
+      }
+      const response = util.validateEmail(email);
+
+      if (!response) {
+        return handleError(
+          {
+            error: true,
+            errorMsn: "Email invalido, por favor ingresa un email valido",
+          },
           authDispatch
         );
       }

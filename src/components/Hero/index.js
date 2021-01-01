@@ -8,7 +8,14 @@ const Hero = ({ title }) => {
       <div className="containerCallAction">
         <h2>{util.capitalize(title)}</h2>
 
-        <a className={"linkPress"}>Visitar sitio oficial</a>
+        <a
+          href="https://mediaty.co/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={"linkPress"}
+        >
+          Visitar sitio oficial
+        </a>
       </div>
     </div>
   );

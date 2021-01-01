@@ -361,6 +361,7 @@ body {
   border-radius: 5px;
   color: white;
   height: 30vh;
+  text-transform: uppercase;
 }
 .detailInformation {
   display: flex;
@@ -369,7 +370,7 @@ body {
 }
 
 .createBy {
-  display: flex;
+  text-transform: uppercase;
 }
 .detailInformation span {
   color: var(--gra4);
