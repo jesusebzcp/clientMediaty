@@ -4,7 +4,7 @@ const HeadBase = () => {
   return (
     <Head>
       <html lang="es" />
-      <title>Treinta</title>
+      <title>Mediaty</title>
       <link
         rel="icon"
         type="image/png"

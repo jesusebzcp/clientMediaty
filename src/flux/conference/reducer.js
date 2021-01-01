@@ -1,11 +1,17 @@
 import createReducer from "../createReducer";
-import { LOADING, SET_USER, HANDLE_ERROR, SING_OFF } from "./types";
+import {
+  LOADING,
+  HANDLE_ERROR,
+  GET_CONFERENCES,
+  ADD_CONFERENCES,
+} from "./types";
 
-export const INITIAL_STATE_AUTH = {
+export const INITIAL_STATE_CONFERENCE = {
   errorMsn: "",
   error: false,
   loading: false,
-  user: null,
+  all: [],
+  conferenceUser: [],
 };
 const handleError = (state, action) => {
   const { error, errorMsn } = action.payload;
@@ -22,23 +28,22 @@ const setLoading = (state, action) => {
     loading: action.payload,
   };
 };
-const setUser = (state, action) => {
+const getConferences = (state, action) => {
   return {
     ...state,
-    user: action.payload,
+    all: action.payload,
   };
 };
-const singOff = (state) => {
-  localStorage.removeItem("token");
+const addConferences = (state, action) => {
   return {
     ...state,
-    user: null,
+    all: state.all.concat(action.payload),
   };
 };
 
-export default createReducer(INITIAL_STATE_AUTH, {
+export default createReducer(INITIAL_STATE_CONFERENCE, {
   [HANDLE_ERROR]: handleError,
   [LOADING]: setLoading,
-  [SET_USER]: setUser,
-  [SING_OFF]: singOff,
+  [GET_CONFERENCES]: getConferences,
+  [ADD_CONFERENCES]: addConferences,
 });

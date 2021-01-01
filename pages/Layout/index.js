@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext, useEffect } from "react";
 import HeadBase from "../../src/components/HeadBase";
-import Loading from "../../src/components/Loading";
 import NavBar from "../../src/components/NavBar";
 
 import { StoreContext } from "../../src/flux";
@@ -23,21 +22,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {authState.loading ? (
-        <Loading />
-      ) : (
-        <>
-          {user ? (
-            <>
-              <NavBar />
-              <div className="layout">{children}</div>
-            </>
-          ) : (
-            <Login />
-          )}
-        </>
-      )}
       <HeadBase />
+
+      {user ? (
+        <>
+          <NavBar />
+          <div className="layout">{children}</div>
+        </>
+      ) : (
+        <Login />
+      )}
     </>
   );
 };

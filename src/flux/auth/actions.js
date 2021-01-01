@@ -44,8 +44,12 @@ export const loginDispatch = async (user, dispatch) => {
     userAuth(res.data.token, dispatch);
     setLoading(false, dispatch);
   } catch (error) {
-    console.log("error loginDispatch =>", error.response);
-    handleError({ error: true, errorMsn: error.response.data.msn }, dispatch);
+    console.log("error loginDispatch =>", error?.response);
+
+    handleError(
+      { error: true, errorMsn: error?.response?.data?.msn },
+      dispatch
+    );
   }
 };
 

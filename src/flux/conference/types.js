@@ -1,0 +1,4 @@
+export const HANDLE_ERROR = "HANDLE_ERROR";
+export const LOADING = "LOADING";
+export const GET_CONFERENCES = "GET_CONFERENCES";
+export const ADD_CONFERENCES = "ADD_CONFERENCESs";

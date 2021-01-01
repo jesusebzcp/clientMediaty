@@ -37,10 +37,14 @@ h6,
 p {
   margin: 0;
 }
+body {
+  background-color: #e9e9e9;
+}
 .containerLogin {
   height: 100vh;
   width: 100vw;
   display: flex;
+  background: white;
 }
 .containerImg {
   display: flex;
@@ -66,6 +70,10 @@ p {
   align-items: center;
   flex-direction: column;
   justify-content: center;
+}
+.labelInput {
+  margin: 0.5rem;
+  color: var(--gra2);
 }
 .inputGlobal {
   background-color: var(--gra3);
@@ -156,23 +164,20 @@ p {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #fafafa;
 }
 .navBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 6px 15px -5px rgba(0, 0, 0, 0.75);
   padding: 0.5rem 2rem;
   margin-bottom: 1rem;
+  background-color: white;
 }
 .containerLogoNav img {
   width: 50px;
   height: 50px;
 }
-.layout {
-  background-color: #fafafa;
-}
+
 .userDefault {
   display: flex;
   align-items: center;
@@ -185,39 +190,189 @@ p {
 .userDefault img {
   width: 40px;
   height: 40px;
-  margin-right: 1rem;
+  margin: 0 1rem;
 }
 .containerLinks {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.containerLinks a {
+.link {
   margin-right: 1rem;
   color: var(--gra4);
   font-size: 0.9rem;
   cursor: pointer;
 }
+.activeLink {
+  margin-right: 1rem;
+  color: var(--gra1);
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
 .containerLinks a:hover {
   color: var(--gra1);
   transition: all 0.3s ease-in;
   text-decoration: underline;
 }
-.containerHero {
+.container {
   display: flex;
-  margin-top: 2rem;
+}
+.column1 {
+  flex: 1;
+}
+.column2 {
+  flex: 3;
+}
+.column3 {
+  flex: 1;
 }
 .hero {
-  display: flex;
-  background-color: #212121;
-  flex: 2;
-  align-items: center;
-  height: 25vh;
+  background-color: #333233;
+  height: 30vh;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+.hero h2 {
   color: white;
 }
-.activeLink {
-  color: #000;
-  text-decoration: underline;
+
+.formConference {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+
+  margin: 2rem 0;
+  border-radius: 10px;
+  padding: 2rem 0;
+  -webkit-box-shadow: 0px 2px 13px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 13px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 13px -2px rgba(0, 0, 0, 0.75);
+}
+.checkConference {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.checkConference input {
+  margin-left: 3rem;
+}
+.menuIndex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 0;
+  align-items: center;
+}
+.containerItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  border: 0.5px solid var(--gra3);
+  display: flex;
+  width: 800px;
+  background-color: white;
+  padding: 10px;
+}
+.hour {
+  flex: 1;
+  display: flex;
+  margin: 10px;
+}
+.hour span {
+  font-size: 1.3rem;
+  color: var(--gra4);
+}
+.event {
+  flex: 3;
+}
+.location {
+  font-size: 1rem;
+  color: var(--gra4);
+}
+.title {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  cursor: pointer;
+}
+.members {
+  font-size: 1rem;
+  color: var(--gra4);
+}
+.cardDetail {
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detailInformation {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.createBy {
+  display: flex;
+}
+.detailInformation span {
+  color: var(--gra4);
+  font-size: 1.2rem;
+}
+.noFound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.noFound span {
+  margin-top: -4rem;
+}
+@media screen and (max-width: 600px) {
+  .containerImg {
+    display: none;
+  }
+  .navBar {
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    width: 95%;
+  }
+  .column1 {
+    display: none;
+  }
+  .column2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .column3 {
+    display: none;
+  }
+  .nameUser {
+    display: none;
+  }
+  .menuIndex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menuIndex span {
+    margin: 0 10px;
+  }
+  .hero {
+    width: 100%;
+  }
+  .formConference {
+    padding: 1rem;
+  }
 }

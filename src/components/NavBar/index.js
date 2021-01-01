@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { StoreContext } from "../../flux";
 import { useRouter } from "next/router";
+import { singOff } from "../../flux/auth/actions";
 
 const NavBar = () => {
-  const { state } = useContext(StoreContext);
+  const { state, authDispatch } = useContext(StoreContext);
   const { authState } = state;
   const { user } = authState;
 
@@ -18,31 +19,30 @@ const NavBar = () => {
 
       <div className="containerLinks">
         <a
-          className={router.pathname === "/" && "activeLink"}
+          className={router.pathname === "/" ? "activeLink" : "link"}
           onClick={() => router.push("/")}
         >
-          Home
+          Explorar
         </a>
 
         {user && user.role === "speaker" && (
           <a
-            className={router.pathname === "/Conference" && "activeLink"}
+            className={
+              router.pathname === "/Conference" ? "activeLink" : "link"
+            }
             onClick={() => router.push("/Conference")}
           >
             Conferencia
           </a>
         )}
-        <a
-          className={router.pathname === "/Profile" && "activeLink"}
-          onClick={() => router.push("/Profile")}
-        >
-          Perfil
+
+        <a className="link" onClick={() => singOff(authDispatch)}>
+          Cerrar sesión
         </a>
-        <a>Cerrar sesión</a>
 
         <div className="userDefault">
           <img src={"/static/assets/images/user.png"} />
-          <span>Jesus briceño</span>
+          <span className="nameUser">Jesus briceño</span>
         </div>
       </div>
     </nav>
